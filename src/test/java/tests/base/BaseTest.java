@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.AccountPage;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.NewAccountModal;
 
@@ -22,6 +23,7 @@ public class BaseTest {
     public LoginPage loginPage;
     public AccountPage accountPage;
     public NewAccountModal newAccountModal;
+    public HomePage homePage;
 
 
     @Parameters({"browser"}) // Задаем параметр, который будет открывать выбранный браузер по умолчанию.
@@ -50,6 +52,7 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
         accountPage = new AccountPage(driver);
         newAccountModal = new NewAccountModal(driver);
+        homePage = new HomePage(driver);
     }
 
 //    @AfterMethod(alwaysRun = true)

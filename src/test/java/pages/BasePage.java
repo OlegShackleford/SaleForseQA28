@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,4 +15,6 @@ public abstract class BasePage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    public abstract BasePage isPageOpened();
+    public abstract BasePage open();
 }
