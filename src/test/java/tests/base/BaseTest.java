@@ -13,10 +13,11 @@ import pages.AccountPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.NewAccountModal;
+import utils.AllureUtils;
 
 import java.time.Duration;
 
-//@Listeners(TestListener.class)
+@Listeners(TestListener.class)
 public class BaseTest {
 
     public WebDriver driver;
@@ -33,6 +34,8 @@ public class BaseTest {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("start-maximized");
             options.addArguments("--disable-notifications");
+            options.addArguments("--disable-save-password-bubble");
+            options.addArguments("--disable-autofill-save");
             driver = new ChromeDriver(options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         } else if (browser.equalsIgnoreCase("firefox")) {
@@ -49,17 +52,18 @@ public class BaseTest {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }
 
+        TestListener.setDriver(driver);
         loginPage = new LoginPage(driver);
         accountPage = new AccountPage(driver);
         newAccountModal = new NewAccountModal(driver);
         homePage = new HomePage(driver);
     }
 
-//    @AfterMethod(alwaysRun = true)
-//    public void tearDown(ITestResult result) {
-//        if (ITestResult.FAILURE == result.getStatus()){
-////            AllureUtils.takeScreenshot(driver);
-//        }
-//        driver.quit();
-//    }
+    @AfterMethod(alwaysRun = true)
+    public void tearDown(ITestResult result) {
+        if (ITestResult.FAILURE == result.getStatus()){
+            AllureUtils.takeScreenshot(driver);
+        }
+        driver.quit();
+    }
 }

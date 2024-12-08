@@ -1,43 +1,47 @@
 package tests.base;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
-
 import java.util.concurrent.TimeUnit;
-
-
+import utils.AllureUtils;
+@Log4j2
 public class TestListener implements ITestListener {
+
 private static WebDriver driver;
+
 public static void setDriver(WebDriver driver){
     TestListener.driver = driver;
 }
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
-        System.out.printf("======================================== STARTING TEST %s ========================================%n", iTestResult.getName());
+        log.info("======================================== STARTING TEST '{}' ========================================%n",
+                iTestResult.getName());
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-        System.out.printf("======================================== FINISHED TEST %s Duration: %ss ========================================%n", iTestResult.getName(),
+        log.info("======================================== FINISHED TEST '{}' Duration: '{}'s ========================================%n",
+                iTestResult.getName(),
                 getExecutionTime(iTestResult));
 
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        System.out.printf("======================================== FAILED TEST %s Duration: %ss ========================================%n", iTestResult.getName(),
+        log.info("======================================== FAILED TEST '{}' Duration: '{}'s ========================================%n",
+                iTestResult.getName(),
                 getExecutionTime(iTestResult));
-//        AllureUtils.takeScreenshot(driver);
+        AllureUtils.takeScreenshot(driver);
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-        System.out.printf("======================================== SKIPPING TEST %s ========================================%n", iTestResult.getName());
-//        AllureUtils.takeScreenshot(driver);
+        log.info("======================================== SKIPPING TEST '{}' ========================================%n", iTestResult.getName());
+        AllureUtils.takeScreenshot(driver);
     }
 
     @Override

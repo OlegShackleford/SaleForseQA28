@@ -3,6 +3,7 @@ package pages;
 import dto.Account;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,9 +11,11 @@ import wrappers.Input;
 import wrappers.Picklist;
 import wrappers.Textarea;
 
+@Log4j2
 public class NewAccountModal extends BasePage {
 
     private final By BUTTON_SAFE = By.xpath("//*[@name='SaveEdit']");
+    private final String GET_TITLE = "//span[text() = 'Accounts']";
 
     public NewAccountModal(WebDriver driver) {
         super(driver);
@@ -21,18 +24,21 @@ public class NewAccountModal extends BasePage {
     @Description("Checking page loading")
     @Override
     public NewAccountModal isPageOpened() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text() = 'Accounts']")));
+        log.info("Method isPageOpened");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(GET_TITLE)));
         return this;
     }
 
-    @Description("Open New modal account window")
+    @Step("Open New modal account window")
     @Override
     public NewAccountModal open() {
+        log.info("Open new modal page");
         return this;
     }
 
     @Step("Write field in new account")
     public NewAccountModal createAccount(Account account) {
+        log.info("Create new account into modal window");
         new Picklist(driver, "Rating").select(account.getRating());
         new Input(driver, "Account Name").write(account.getAccountName());
         new Input(driver, "Phone").write(account.getPhone());
@@ -68,7 +74,9 @@ public class NewAccountModal extends BasePage {
     }
 
     @Step("Click to button save")
-    public void clickButtonSafe() {
+    public AccountPage clickButtonSafe() {
+        log.info("Click to button safe");
         driver.findElement(BUTTON_SAFE).click();
+        return new AccountPage(driver);
     }
 }
