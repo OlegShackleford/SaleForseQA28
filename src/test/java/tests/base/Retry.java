@@ -1,4 +1,4 @@
-package tests;
+package tests.base;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
@@ -14,6 +14,7 @@ public class Retry implements IRetryAnalyzer {
             if (count < maxTry) {
                 count++;
                 iTestResult.setStatus(ITestResult.FAILURE);
+
                 return true;
             } else {
                 iTestResult.setStatus(ITestResult.FAILURE);
