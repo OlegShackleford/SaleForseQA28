@@ -6,8 +6,8 @@ import pages.LoginPage;
 public class LoginStep {
 
     LoginPage loginPage;
-    private final String USER_NAME = "tborodich@tms.sandbox";
-    private final String PASSWORD = "Password001";
+    private String USER_NAME = "";
+    private String PASSWORD = "";
 
     public LoginStep(WebDriver driver) {
         loginPage = new LoginPage(driver);

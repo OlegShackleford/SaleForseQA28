@@ -13,8 +13,8 @@ public class AccountStep {
     LoginPage loginPage;
     AccountPage accountPage;
     NewAccountModal newAccountModal;
-    private final String USER_NAME = "tborodich@tms.sandbox";
-    private final String PASSWORD = "Password001";
+    private String USER_NAME = "";
+    private String PASSWORD = "";
 
     public AccountStep(WebDriver driver) {
         loginPage = new LoginPage(driver);

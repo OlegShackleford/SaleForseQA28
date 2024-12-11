@@ -14,6 +14,7 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.NewAccountModal;
 import utils.AllureUtils;
+import utils.PropertyReader;
 
 import java.time.Duration;
 
@@ -25,8 +26,8 @@ public class BaseTest {
     public AccountPage accountPage;
     public NewAccountModal newAccountModal;
     public HomePage homePage;
-    protected final String USER_NAME = "tborodich@tms.sandbox";
-    protected final String PASSWORD = "Password001";
+    protected final String USER_NAME = System.getProperty("USER_NAME", PropertyReader.getProperty("USER_NAME"));
+    protected final String PASSWORD = System.getProperty("PASSWORD",PropertyReader.getProperty("PASSWORD"));
 
     @Parameters({"browser"}) // Задаем параметр, который будет открывать выбранный браузер по умолчанию.
     @BeforeMethod
