@@ -27,7 +27,6 @@ public static void setDriver(WebDriver driver){
         log.info("======================================== FINISHED TEST '{}' Duration: '{}'s ========================================%n",
                 iTestResult.getName(),
                 getExecutionTime(iTestResult));
-
     }
 
     @Override

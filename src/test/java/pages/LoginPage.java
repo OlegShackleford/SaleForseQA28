@@ -14,8 +14,6 @@ public class LoginPage extends BasePage {
     private final By USER_INPUT = By.id("username");
     private final By PASSWORD_INPUT = By.id("password");
     private final By LOGIN_BUTTON = By.id("Login");
-    private final String USER_NAME = "tborodich@tms.sandbox";
-    private final String PASSWORD = "Password001";
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -28,7 +26,6 @@ public class LoginPage extends BasePage {
             log.error(e.getMessage());
             Assert.fail("Login page dont open");
         }
-
         return this;
     }
 
@@ -40,10 +37,10 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Input field to login")
-    public void login() {
-        log.info("log in using credential: User name '{}' Password '{}'",USER_NAME,PASSWORD);
-        driver.findElement(USER_INPUT).sendKeys(USER_NAME);
-        driver.findElement(PASSWORD_INPUT).sendKeys(PASSWORD);
+    public void login(String userName,String password) {
+        log.info("log in using credential: User name '{}' Password '{}'",userName,password);
+        driver.findElement(USER_INPUT).sendKeys(userName);
+        driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
     }
 }

@@ -25,7 +25,8 @@ public class BaseTest {
     public AccountPage accountPage;
     public NewAccountModal newAccountModal;
     public HomePage homePage;
-
+    protected final String USER_NAME = "tborodich@tms.sandbox";
+    protected final String PASSWORD = "Password001";
 
     @Parameters({"browser"}) // Задаем параметр, который будет открывать выбранный браузер по умолчанию.
     @BeforeMethod

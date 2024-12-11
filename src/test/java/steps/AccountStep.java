@@ -13,6 +13,8 @@ public class AccountStep {
     LoginPage loginPage;
     AccountPage accountPage;
     NewAccountModal newAccountModal;
+    private final String USER_NAME = "tborodich@tms.sandbox";
+    private final String PASSWORD = "Password001";
 
     public AccountStep(WebDriver driver) {
         loginPage = new LoginPage(driver);
@@ -22,8 +24,16 @@ public class AccountStep {
 
     public void createAccount(Account account) {
         log.info("Account '{}'", account);
-        loginPage.open().isPageOpened().login();
-        accountPage.open().isPageOpened().openModalPage();
-        newAccountModal.createAccount(account).clickButtonSafe();
+        loginPage.
+                open().
+                isPageOpened().
+                login(USER_NAME,PASSWORD);
+        accountPage.
+                open().
+                isPageOpened().
+                openModalPage();
+        newAccountModal.
+                createAccount(account).
+                clickButtonSafe();
     }
 }
