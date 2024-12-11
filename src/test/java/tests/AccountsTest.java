@@ -7,6 +7,7 @@ import io.qameta.allure.Flaky;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import tests.base.BaseTest;
+import tests.base.Retry;
 
 import static org.testng.Assert.assertEquals;
 
@@ -21,8 +22,8 @@ public class AccountsTest extends BaseTest {
             rating("Hot").
             phone(faker.phoneNumber().phoneNumber()).
             fax("fax" + faker.phoneNumber().cellPhone()).
-            accountNumber(faker.number().digit()).
-            build();//Пример использования DTO Lombok и Faker.
+            accountNumber(faker.number().digit()).website("www.sdsd.com").build();
+            //Пример использования DTO Lombok и Faker.
 
     Account account = new Account("Hot",
             "AMD", "+90903383",
@@ -55,7 +56,8 @@ public class AccountsTest extends BaseTest {
             "No",
             "bla ba bla");
 
-    @Test(testName = "Create new account", description = "Create new account in modal window")
+    @Test(testName = "Create new account", description = "Create new account in modal window",
+            retryAnalyzer = Retry.class)
     @Description("Check create new account in modal window with all field." +
             " And find account name in list at account page")
     @Flaky
@@ -63,7 +65,7 @@ public class AccountsTest extends BaseTest {
         loginPage.
                 open().
                 isPageOpened().
-                login();
+                login(USER_NAME,PASSWORD);
         accountPage.
                 openModalPage().
                 isPageOpened().
@@ -74,14 +76,15 @@ public class AccountsTest extends BaseTest {
         assertEquals(accountPage.getCompanyName(name), "AMD", "Incorrect company name");
     }
 
-    @Test(testName = "Check button edit at page", description = "Check button edit and rename text field")
+    @Test(testName = "Check button edit at page", description = "Check button edit and rename text field",
+            retryAnalyzer = Retry.class)
     @Description("Check button edit and rename visible field at page:Phone,Website,Account Site")
     @Flaky
     public void checkEditButton() {
         loginPage.
                 open().
                 isPageOpened().
-                login();
+                login(USER_NAME,PASSWORD);
         account.setAccountName("Intel");
         account.setWebsite("intel.com");
         account.setAccountSite("Intel.com");

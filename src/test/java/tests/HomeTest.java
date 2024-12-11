@@ -11,7 +11,7 @@ public class HomeTest extends BaseTest {
     @Test(testName = "Verify of drop-box menu", description = "Check a drop-down menu")
     @Description("Checking the operation of buttons in a drop-down menu and verification of the title")
     public void checkButtonWaffle() {
-        loginPage.open().isPageOpened().login();
+        loginPage.open().isPageOpened().login(USER_NAME,PASSWORD);
         homePage.isPageOpened().clickButtonWaffle().selectDropBox("Community");
         String actualTitle = homePage.getTitle("Community");
         assertEquals(actualTitle, "Community", "Incorrect title");

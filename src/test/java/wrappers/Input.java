@@ -18,7 +18,8 @@ public class Input {
 
     public void write(String text){
         log.info("Writing '{}' into {}", text, label);
-        WebElement inputField = driver.findElement(By.xpath(String.format("//label[text()='%s']//ancestor::lightning-input//input", label)));
+        WebElement inputField = driver.findElement(By.xpath(String.format("//label" +
+                "[text()='%s']//ancestor::lightning-input//input", label)));
         inputField.clear();
         inputField.sendKeys(text);
     }

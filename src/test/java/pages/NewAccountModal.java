@@ -39,37 +39,100 @@ public class NewAccountModal extends BasePage {
     @Step("Write field in new account")
     public NewAccountModal createAccount(Account account) {
         log.info("Create new account into modal window");
-        new Picklist(driver, "Rating").select(account.getRating());
-        new Input(driver, "Account Name").write(account.getAccountName());
-        new Input(driver, "Phone").write(account.getPhone());
-        new Input(driver, "Fax").write(account.getFax());
-        new Input(driver, "Account Number").write(account.getAccountNumber());
-        new Input(driver, "Website").write(account.getWebsite());
-        new Input(driver, "Account Site").write(account.getAccountSite());
-        new Input(driver, "Ticker Symbol").write(account.getTickerSymbol());
-        new Picklist(driver, "Type").select(account.getType());
-        new Picklist(driver, "Ownership").select(account.getOwnership());
-        new Picklist(driver, "Industry").select(account.getIndustry());
-        new Input(driver, "Employees").write(account.getEmployees());
-        new Input(driver, "Annual Revenue").write(account.getAnnualRevenue());
-        new Input(driver, "SIC Code").write(account.getSicCode());
-        new Textarea(driver, "Billing Street").write(account.getBillingStreet());
-        new Textarea(driver, "Shipping Street").write(account.getShippingStreet());
-        new Input(driver, "Billing City").write(account.getBillingCity());
-        new Input(driver, "Billing State/Province").write(account.getState());
-        new Input(driver, "Billing Zip/Postal Code").write(account.getBillingZip());
-        new Input(driver, "Billing Country").write(account.getBillingCountry());
-        new Input(driver, "Shipping City").write(account.getShippingCity());
-        new Input(driver, "Shipping State/Province").write(account.getStateProvince());
-        new Input(driver, "Shipping Zip/Postal Code").write(account.getShippingZip());
-        new Input(driver, "Shipping Country").write(account.getShippingCountry());
-        new Picklist(driver, "Customer Priority").select(account.getCustomerPriority());
-        new Picklist(driver, "SLA").select(account.getSLA());
-        new Input(driver, "SLA Serial Number").write(account.getSLASerialNumber());
-        new Input(driver, "Number of Locations").write(account.getNumberOfLocations());
-        new Picklist(driver, "Upsell Opportunity").select(account.getUpsellOpportunity());
-        new Picklist(driver, "Active").select(account.getActive());
-        new Textarea(driver, "Description").write(account.getDescription());
+
+        if (account.getAccountName() != null) {
+            new Input(driver, "Account Name").write(account.getAccountName());
+        }
+        if (account.getRating() != null) {
+            new Picklist(driver, "Rating").select(account.getRating());
+        }
+        if (account.getPhone() != null) {
+            new Input(driver, "Phone").write(account.getPhone());
+        }
+        if (account.getFax() != null) {
+            new Input(driver, "Fax").write(account.getFax());
+        }
+        if (account.getAccountNumber() != null) {
+            new Input(driver, "Account Number").write(account.getAccountNumber());
+        }
+        if (account.getWebsite() != null) {
+            new Input(driver, "Website").write(account.getWebsite());
+        }
+        if (account.getAccountSite() != null) {
+            new Input(driver, "Account Site").write(account.getAccountSite());
+        }
+        if (account.getTickerSymbol() != null) {
+            new Input(driver, "Ticker Symbol").write(account.getTickerSymbol());
+        }
+        if (account.getType() != null) {
+            new Picklist(driver, "Type").select(account.getType());
+        }
+        if (account.getOwnership() != null) {
+            new Picklist(driver, "Ownership").select(account.getOwnership());
+        }
+        if (account.getIndustry() != null) {
+            new Picklist(driver, "Industry").select(account.getIndustry());
+        }
+        if (account.getEmployees() != null) {
+            new Input(driver, "Employees").write(account.getEmployees());
+        }
+        if (account.getAnnualRevenue() != null) {
+            new Input(driver, "Annual Revenue").write(account.getAnnualRevenue());
+        }
+        if (account.getSicCode() != null) {
+            new Input(driver, "SIC Code").write(account.getSicCode());
+        }
+        if (account.getBillingStreet() != null) {
+            new Textarea(driver, "Billing Street").write(account.getBillingStreet());
+        }
+        if (account.getShippingStreet() != null) {
+            new Textarea(driver, "Shipping Street").write(account.getShippingStreet());
+        }
+        if (account.getBillingCity() != null) {
+            new Input(driver, "Billing City").write(account.getBillingCity());
+        }
+        if (account.getState() != null) {
+            new Input(driver, "Billing State/Province").write(account.getState());
+        }
+        if (account.getBillingZip() != null) {
+            new Input(driver, "Billing Zip/Postal Code").write(account.getBillingZip());
+        }
+        if (account.getBillingCountry() != null) {
+            new Input(driver, "Billing Country").write(account.getBillingCountry());
+        }
+        if (account.getShippingCity() != null) {
+            new Input(driver, "Shipping City").write(account.getShippingCity());
+        }
+        if (account.getStateProvince() != null) {
+            new Input(driver, "Shipping State/Province").write(account.getStateProvince());
+        }
+        if (account.getShippingZip() != null) {
+            new Input(driver, "Shipping Zip/Postal Code").write(account.getShippingZip());
+        }
+        if (account.getShippingCountry() != null) {
+            new Input(driver, "Shipping Country").write(account.getShippingCountry());
+        }
+        if (account.getCustomerPriority() != null) {
+            new Picklist(driver, "Customer Priority").select(account.getCustomerPriority());
+        }
+        if (account.getSLA() != null) {
+            new Picklist(driver, "SLA").select(account.getSLA());
+        }
+        if (account.getSLASerialNumber() != null) {
+            new Input(driver, "SLA Serial Number").write(account.getSLASerialNumber());
+        }
+        if (account.getNumberOfLocations() != null) {
+            new Input(driver, "Number of Locations").write(account.getNumberOfLocations());
+        }
+        if (account.getUpsellOpportunity() != null) {
+            new Picklist(driver, "Upsell Opportunity").select(account.getUpsellOpportunity());
+        }
+        if (account.getActive() != null) {
+            new Picklist(driver, "Active").select(account.getActive());
+        }
+        if (account.getDescription() != null) {
+            new Textarea(driver, "Description").write(account.getDescription());
+        }
         return this;
     }
 
