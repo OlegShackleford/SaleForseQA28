@@ -29,7 +29,7 @@ public class BaseTest {
     protected final String USER_NAME = System.getProperty("USER_NAME", PropertyReader.getProperty("USER_NAME"));
     protected final String PASSWORD = System.getProperty("PASSWORD",PropertyReader.getProperty("PASSWORD"));
 
-    @Parameters({"browser"}) // Задаем параметр, который будет открывать выбранный браузер по умолчанию.
+    @Parameters({"browser"}) // Задаем параметр,который будет открывать выбранный браузер по умолчанию.
     @BeforeMethod
     public void setUp(@Optional("chrome") String browser) {
         if (browser.equalsIgnoreCase("chrome")){
