@@ -34,7 +34,7 @@ public class BaseTest {
     public void setUp(@Optional("chrome") String browser) {
         if (browser.equalsIgnoreCase("chrome")){
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("start-maximized");
+            options.addArguments("--headless");
             options.addArguments("--disable-notifications");
             options.addArguments("--disable-save-password-bubble");
             options.addArguments("--disable-autofill-save");
@@ -42,13 +42,13 @@ public class BaseTest {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         } else if (browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
-            firefoxOptions.addArguments("start-maximized");
+            firefoxOptions.addArguments("--headless");
             firefoxOptions.addArguments("--disable-notifications");
             driver = new FirefoxDriver(firefoxOptions);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         } else if (browser.equalsIgnoreCase("edge")) {
             EdgeOptions options = new EdgeOptions();
-            options.addArguments("start-maximized");
+            options.addArguments("--headless");
             options.addArguments("--disable-notifications");
             driver = new EdgeDriver(options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
